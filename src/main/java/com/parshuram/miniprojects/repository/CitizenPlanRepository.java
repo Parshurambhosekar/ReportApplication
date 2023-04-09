@@ -1,0 +1,18 @@
+package com.parshuram.miniprojects.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.parshuram.miniprojects.entity.CitizenPlan;
+
+public interface CitizenPlanRepository extends JpaRepository<CitizenPlan, Integer> {
+
+	@Query("select distinct (planName) from CitizenPlan")
+	List<String> getCitizenPlanByName();
+
+	@Query("select distinct (planStatus) from CitizenPlan")
+	List<String> getCitizenPlanByStatus();
+
+}
